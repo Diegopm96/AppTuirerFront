@@ -1,0 +1,17 @@
+<p-accordion>
+  <p-accordionTab>
+    <textarea
+    [(ngModel)]="contenido"
+      rows="5"
+      cols="100"
+      pInputTextarea
+      [autoResize]="true"
+      placeholder="Comenta algo..."
+    ></textarea>
+
+    <p-button label="Comentar" (click)="crearComentario()"></p-button>
+    <ng-template pTemplate="header">
+      <i class="pi pi-align-center"></i>
+    </ng-template>
+  </p-accordionTab>
+</p-accordion>
