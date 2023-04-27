@@ -3,14 +3,21 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Tuit } from '../interfaces/tuit-interface';
 import { Observable } from 'rxjs';
 import { Comentario } from '../interfaces/comentario-interface';
+import { CookieService } from 'ngx-cookie-service';
+import { Usuario } from '../interfaces/usuario-interface';
 @Injectable({
   providedIn: 'root',
 })
 export class FeedService {
   private url: string = 'http://localhost:8080/api';
-  constructor(private http: HttpClient) {}
+
+  private  json = String(sessionStorage.getItem('usuario'));
+
+
+  constructor(private http: HttpClient, private cookies: CookieService) {}
 
   obtenerTuits(): Observable<Tuit[]> {
+
     const url = this.url + '/tuits';
     console.log(url);
     return this.http.get<Tuit[]>(url);
@@ -39,17 +46,19 @@ export class FeedService {
       id: undefined,
       contenido: contenido,
 
-      idUsuario: idUsuario,
+      usuario: {
+        id: idUsuario,
+      },
       idTuitComentado: idTuit,
     };
 
     return this.http.post<Comentario>(url, comentario);
   }
 
-  obtenerTuitsUsuario(): Observable<Tuit[]> {
+  obtenerTuitsUsuario(id:number): Observable<Tuit[]> {
     // Crear variable de sesion con el id del usuario logueado
 
-    const url = `${this.url}/tuits/${2}`;
+    const url = `${this.url}/tuits/${id}`;
     return this.http.get<Tuit[]>(url);
   }
 
@@ -62,5 +71,20 @@ export class FeedService {
     const url = `${this.url}/comentario/tuit/${idTuit}`;
 
     return this.http.get<Comentario[]>(url);
+  }
+
+  obtenerUsuarioLogueado() {
+    const email = this.cookies.get('usuarioLogueado');
+    const url = `${this.url}/usuario/email/${email}`;
+
+    return this.http.get<Usuario>(url);
+  }
+
+  usuarioLogueado(){
+    if(null!=sessionStorage.getItem('usuario')){
+      const usuario:Usuario = JSON.parse(this.json)
+      return usuario
+    }
+    return null;
   }
 }

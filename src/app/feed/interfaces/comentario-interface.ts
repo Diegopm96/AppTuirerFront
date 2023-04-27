@@ -1,10 +1,11 @@
 import { Like } from "./like-interface";
+import { Usuario } from "./usuario-interface";
 
 export interface Comentario {
   id?:               number;
   contenido:        string;
   fechaPublicacion?: Date;
-  idUsuario:        number;
+  usuario:        Usuario;
   idTuitComentado:  number;
   likes?:            Like[];
 }

@@ -1,14 +1,32 @@
-<div class="login-container">
+<div class="login-container form-group">
   <h1>Iniciar sesión</h1>
-
-  <div class="form-group">
-    <label for="email">Correo electrónico</label>
-    <input type="text" pInputText [(ngModel)]="email" />
+  <div class="grid">
+    <div
+      class="col-5 flex align-items-center justify-content-center form-group"
+    >
+      <div class="p-fluid">
+        <div class="field">
+          <label for="email">Email</label>
+          <input [(ngModel)]="email" pInputText id="username" type="text" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <p-password [(ngModel)]="password" [feedback]="false"></p-password>
+        </div>
+        <button pButton (click)="login()" label="login"></button>
+      </div>
+    </div>
+    <div class="col-2">
+      <p-divider layout="vertical">
+        <b>OR</b>
+      </p-divider>
+    </div>
+    <div class="col-5 flex align-items-center justify-content-center">
+      <p-button
+        label="Sign Up"
+        icon="pi pi-user-plus"
+        styleClass="p-button-success"
+      ></p-button>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="password">Contraseña</label>
-
-    <p-password [(ngModel)]="password" [feedback]="false"></p-password>
-  </div>
-  <button type="submit" pButton (click)="login()">Enviar</button>
 </div>

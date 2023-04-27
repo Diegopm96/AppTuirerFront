@@ -16,6 +16,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { DividerModule } from 'primeng/divider';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -31,13 +33,16 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     ButtonModule,
     InputTextModule,
     FormsModule,
-    PasswordModule
+    PasswordModule,
+    DividerModule,
+
 
   ],
   providers: [
     {
       provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true
-    }
+    },
+    CookieService
   ],
   bootstrap: [AppComponent],
 })
