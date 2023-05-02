@@ -14,6 +14,9 @@ import { DividerModule } from 'primeng/divider';
 import { ComentarComponent } from './components/tuit/comentar/comentar.component';
 import { MostrarComentariosComponent } from './components/mostrar-comentarios/mostrar-comentarios.component';
 import { BadgeModule } from 'primeng/badge';
+import { DialogModule } from 'primeng/dialog';
+import { AvatarModule } from 'primeng/avatar';
+
 @NgModule({
   declarations: [TuitCrearComponent, TuitMostrarComponent, TuitsPropiosComponent, ComentarComponent, MostrarComentariosComponent],
   imports: [
@@ -26,7 +29,10 @@ import { BadgeModule } from 'primeng/badge';
     CardModule,
     AccordionModule,
     DividerModule,
-    BadgeModule
+    BadgeModule,
+    DialogModule,
+    AvatarModule
+
   ],
   exports: [TuitCrearComponent,TuitsPropiosComponent],
 })

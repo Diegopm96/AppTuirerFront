@@ -8,7 +8,8 @@ import { FeedService } from 'src/app/feed/services/feed.service';
 export class ComentarComponent {
   contenido: string = '';
   usuario: any = null;
-
+  visible: boolean = false;
+  checked: boolean = false;
   @Input() idTuit: number = 0;
 
   constructor(private feedService: FeedService) {
@@ -23,5 +24,12 @@ export class ComentarComponent {
       .subscribe((response) => console.log(response));
     this.contenido = '';
     window.location.reload();
+  }
+  showDialog() {
+    this.visible = true;
+  }
+  noShowDialog() {
+    this.contenido = '';
+    this.visible = false;
   }
 }

@@ -9,8 +9,10 @@ import { FeedService } from 'src/app/feed/services/feed.service';
 export class TuitMostrarComponent implements OnInit   {
   tuits: Tuit[] = [];
   contenido:string ='';
-  
-  constructor(private feedService: FeedService) {}
+  usuario:any = null;
+  constructor(private feedService: FeedService) {
+    this.usuario= this.feedService.usuarioLogueado();
+  }
 
   ngOnInit(): void {
     this.obtenerTuits();

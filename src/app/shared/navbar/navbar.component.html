@@ -1,7 +1,16 @@
-<p-menubar >
-  <div class="align-items-start">
-    <div class="logo">
-      <i class="pi pi-moon" style="font-size: 2rem"></i>
-    </div>
-  </div>
+<p-menubar>
+  <ng-template pTemplate="start">
+    <img
+      src="https://primefaces.org/cdn/primeng/images/primeng.svg"
+      height="40"
+      class="mr-2"
+    />
+  </ng-template>
+  <p-button
+    *ngIf="sesionAbierta"
+    icon="pi pi-times"
+    label="Cerrar sesión"
+    styleClass="p-button-outlined p-button-danger"
+    (click)="cerrarSesion()"
+  ></p-button>
 </p-menubar>

@@ -6,19 +6,16 @@ import { FeedService } from 'src/app/feed/services/feed.service';
 @Component({
   selector: 'app-tuit-crear',
   templateUrl: './tuit-crear.component.html',
-
 })
-export class TuitCrearComponent implements OnInit{
-  constructor(private feedService: FeedService) {
-
-  }
+export class TuitCrearComponent implements OnInit {
+  constructor(private feedService: FeedService) {}
   ngOnInit(): void {
-    this.usuario = this.feedService.usuarioLogueado()
+    this.usuario = this.feedService.usuarioLogueado();
+    this.usuario == null ? window.location.reload() : null;
   }
-
 
   contenido: any = '';
-  usuario:any=null
+  usuario: any = null;
 
   obtenerTuits(): void {
     this.feedService.obtenerTuits().subscribe((tuits) => {
@@ -26,14 +23,6 @@ export class TuitCrearComponent implements OnInit{
     });
   }
 
-  // crearTuit(): void {
-  //   console.log(this.contenido);
-  //   let tuit:string = String(this.contenido)
-  //   console.log(tuit)
-  //   console.log(new Date().toLocaleString())
-  //   this.fededService.crearTuit(tuit,2,new Date().toLocaleString())
-  //   .subscribe()
-  // }
   crearTuit() {
     console.log(this.contenido);
 
@@ -41,6 +30,6 @@ export class TuitCrearComponent implements OnInit{
       .crearTuit(this.contenido, this.usuario.id)
       .subscribe((response) => console.log(response));
     this.contenido = '';
-    window.location.reload()
+    window.location.reload();
   }
 }

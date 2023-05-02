@@ -7,7 +7,11 @@
           <p-card>
             <ng-template pTemplate="header">
               <p-divider></p-divider>
-              <i class="pi pi-user" style="color: #708090"></i>
+              <div class="col-12 md:col-4">
+
+
+              </div>
+              <p-avatar label="{{tuit.usuario.nombreUsuario[0]}}" styleClass="mr-2"  shape="circle"></p-avatar>
               {{ tuit.usuario.nombreUsuario }}
             </ng-template>
             <p class="m-0">
@@ -16,8 +20,10 @@
             <ng-template pTemplate="footer">
               Publicado el {{ tuit.fechaPublicacion | date }}
               <p-divider></p-divider>
-              <app-comentar  [idTuit]="tuit.id"></app-comentar>
-              <app-mostrar-comentarios [idTuit]="tuit.id"></app-mostrar-comentarios>
+              <app-comentar [idTuit]="tuit.id"></app-comentar>
+              <app-mostrar-comentarios
+                [idTuit]="tuit.id"
+              ></app-mostrar-comentarios>
             </ng-template>
           </p-card>
         </td>
