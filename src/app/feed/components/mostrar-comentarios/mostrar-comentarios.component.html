@@ -1,0 +1,19 @@
+<div *ngIf="comentarios.length>=1">
+  <p-accordion>
+    <p-accordionTab>
+      <div *ngFor="let comentario of comentarios">
+        <p-card header="">
+          <p class="m-0">
+            {{ comentario.contenido }}
+          </p>
+          <ng-template pTemplate="header">
+            {{comentario.usuario.nombreUsuario}}
+          </ng-template>
+        </p-card>
+      </div>
+      <ng-template pTemplate="header">
+        <i class="pi pi-comments text-2xl" pBadge value="{{comentarios.length}}"></i>
+      </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+</div>

@@ -1,0 +1,33 @@
+<div class="col">
+  <app-tuit-crear></app-tuit-crear>
+  <p-table [value]="tuits" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="body" let-tuit>
+      <tr>
+        <td>
+          <p-card>
+            <ng-template pTemplate="header">
+              <p-divider></p-divider>
+              <div class="col-12 md:col-4">
+
+
+              </div>
+              <p-avatar label="{{tuit.usuario.nombreUsuario[0]}}" styleClass="mr-2"  shape="circle"></p-avatar>
+              {{ tuit.usuario.nombreUsuario }}
+            </ng-template>
+            <p class="m-0">
+              {{ tuit.contenido }}
+            </p>
+            <ng-template pTemplate="footer">
+              Publicado el {{ tuit.fechaPublicacion | date }}
+              <p-divider></p-divider>
+              <app-comentar [idTuit]="tuit.id"></app-comentar>
+              <app-mostrar-comentarios
+                [idTuit]="tuit.id"
+              ></app-mostrar-comentarios>
+            </ng-template>
+          </p-card>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

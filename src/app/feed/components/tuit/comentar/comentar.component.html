@@ -1,0 +1,27 @@
+
+
+<p-button
+  (click)="showDialog()"
+  icon="pi pi-comment"
+  label="Comentar"
+></p-button>
+<button pButton type="button" label="Me gusta" icon="pi {{likeIcon}}" class="p-button-rounded p-button-text " style="border: none; outline: none;" (click)="like()"></button>
+
+
+<p-dialog header="Comentario" [(visible)]="visible" [style]="{ width: '50vw' }">
+  <div class="flex py-2 justify-content-center">
+    <textarea
+      [(ngModel)]="contenido"
+      rows="5"
+      cols="100"
+      pInputTextarea
+      [autoResize]="false"
+      placeholder="Comenta algo..."
+    ></textarea>
+
+  </div>
+  <p-button styleClass="p-button-success" label="Comentar" (click)="crearComentario()"></p-button>
+  <p-button styleClass="p-button-danger" label="Cancelar" (click)="noShowDialog()"></p-button>
+</p-dialog>
+
+

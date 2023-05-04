@@ -1,0 +1,16 @@
+<h1>¿Que estás pensando?</h1>
+<div class="col">
+
+    <textarea
+      rows="10"
+      cols="100"
+      pInputTextarea
+      [autoResize]="true"
+      [(ngModel)]="contenido"
+    ></textarea>
+
+
+</div>
+<div class="col">
+  <p-button label="Submit" (click)="crearTuit()"></p-button>
+</div>
