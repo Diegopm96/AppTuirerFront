@@ -5,4 +5,5 @@ export interface Tuit {
   contenido: string;
   fechaPublicacion?: string;
   usuario: Usuario;
+  likes?: []
 }

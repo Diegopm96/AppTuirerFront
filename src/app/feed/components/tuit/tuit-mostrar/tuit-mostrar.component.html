@@ -18,7 +18,9 @@
               {{ tuit.contenido }}
             </p>
             <ng-template pTemplate="footer">
-              Publicado el {{ tuit.fechaPublicacion | date }}
+
+              <i class="pi pi-heart" style="font-size: 1rem"></i>
+               {{tuit.likes.length}}   Publicado el {{ tuit.fechaPublicacion | date }}
               <p-divider></p-divider>
               <app-comentar [idTuit]="tuit.id"></app-comentar>
               <app-mostrar-comentarios

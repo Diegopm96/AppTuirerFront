@@ -5,19 +5,18 @@ import { Observable } from 'rxjs';
 import { Comentario } from '../interfaces/comentario-interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Usuario } from '../interfaces/usuario-interface';
+import { Like } from '../interfaces/like-interface';
 @Injectable({
   providedIn: 'root',
 })
 export class FeedService {
   private url: string = 'http://localhost:8080/api';
 
-  private  json = String(sessionStorage.getItem('usuario'));
-
+  private json = String(sessionStorage.getItem('usuario'));
 
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
   obtenerTuits(): Observable<Tuit[]> {
-
     const url = this.url + '/tuits';
     console.log(url);
     return this.http.get<Tuit[]>(url);
@@ -55,7 +54,7 @@ export class FeedService {
     return this.http.post<Comentario>(url, comentario);
   }
 
-  obtenerTuitsUsuario(id:number): Observable<Tuit[]> {
+  obtenerTuitsUsuario(id: number): Observable<Tuit[]> {
     // Crear variable de sesion con el id del usuario logueado
 
     const url = `${this.url}/tuits/${id}`;
@@ -80,11 +79,36 @@ export class FeedService {
     return this.http.get<Usuario>(url);
   }
 
-  usuarioLogueado(){
-    if(null!=sessionStorage.getItem('usuario')){
-      const usuario:Usuario = JSON.parse(this.json)
-      return usuario
+  usuarioLogueado() {
+    if (null != sessionStorage.getItem('usuario')) {
+      const usuario: Usuario = JSON.parse(this.json);
+      return usuario;
     }
     return null;
+  }
+
+  crearLike(usuario: number, tuit: number) {
+    const url = `${this.url}/like`;
+
+    const like = {
+      id: undefined,
+      usuario: {
+        id: usuario,
+      },
+      comentario: undefined,
+      tuit: {
+        id: tuit,
+      },
+      flagLike: true,
+    };
+
+    return this.http.post(url, like);
+  }
+
+  obtenerLikesIdTuit(idTuit: number): Observable<Like[]> {
+    const url = `${this.url}/likes/tuit/${idTuit}`;
+
+    return this.http.get<Like[]>(url);
+
   }
 }

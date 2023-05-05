@@ -5,6 +5,7 @@
   icon="pi pi-comment"
   label="Comentar"
 ></p-button>
+<p-button icon="pi {{iconLike}}" styleClass="p-button-rounded p-button-help p-button-text" label="{{likes.length}}" (onClick)="like()"></p-button>
 <p-dialog header="Comentario" [(visible)]="visible" [style]="{ width: '50vw' }">
   <div class="flex py-2 justify-content-center">
     <textarea

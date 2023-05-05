@@ -22,8 +22,7 @@ export class MostrarComentariosComponent implements OnInit {
       .obtenerComentariosTuit(this.idTuit)
       .subscribe((comentarios) => {
         this.comentarios = comentarios;
-        console.log(this.comentarios)
-        console.log(comentarios.length);
+
 
       });
   }
