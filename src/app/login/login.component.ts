@@ -1,22 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email: any = '';
   password: any = '';
+  mensaje:Message[]=[];
 
   constructor(
     private loginService: LoginService,
     private router: Router,
     private cookies: CookieService
   ) {}
+  ngOnInit() {
+
+}
 
   login() {
     const login = {
@@ -24,18 +29,34 @@ export class LoginComponent {
       password: this.password,
     };
     console.log(login);
-    this.loginService.login(login).subscribe((Response) => {
+    this.comprobarLogin()
+    console.log(this.mensaje)
+
+    this.loginService.login(login).subscribe((response) => {
+
+
       this.obtenerUsuarioLogueado();
       this.router.navigate(['/']);
+
     });
   }
 
   obtenerUsuarioLogueado() {
     this.loginService.obtenerUsuarioLogueado().subscribe((response) => {
+
       console.log(response);
       sessionStorage.setItem('usuario', JSON.stringify(response));
-      
+
 
     });
+  }
+
+  comprobarLogin(){
+
+    if(!this.loginService.getToken()){
+      this.mensaje = [{ severity: 'error', summary: 'Login incorrecto', detail: 'Contraseña o usuario incorrecto' }];
+
+      this.password='';
+    }
   }
 }

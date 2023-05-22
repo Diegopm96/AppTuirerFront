@@ -18,6 +18,7 @@ import { PasswordModule } from 'primeng/password';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { DividerModule } from 'primeng/divider';
 import { CookieService } from 'ngx-cookie-service';
+import { MessagesModule } from 'primeng/messages';
 
 
 
@@ -35,6 +36,7 @@ import { CookieService } from 'ngx-cookie-service';
     FormsModule,
     PasswordModule,
     DividerModule,
+    MessagesModule
 
 
   ],
