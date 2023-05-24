@@ -1,0 +1,54 @@
+<!-- app.component.html -->
+
+<div class="card">
+  <h5>Registro</h5>
+  <div class="formgrid grid">
+    <div class="field col-12 md:col-6">
+      <label for="firstname6">Username</label>
+      <input
+      [(ngModel)]="usuario"
+        id="firstname6"
+        type="text"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <p-messages
+      [(value)]="mensajeNombreUsuario"
+      [enableService]="false"
+      [closable]="true"
+    ></p-messages>
+    </div>
+    <div class="field col-12 md:col-6">
+      <label for="lastname6">Password</label>
+      <input
+      [(ngModel)]="password"
+      id="lastname6"
+      type="password"
+      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <p-messages
+            [(value)]="mensajePassword"
+            [enableService]="false"
+            [closable]="true"
+          ></p-messages>
+      <small id="username-help">Mínimo 8 carácteres.</small>
+    </div>
+    <div class="field col-12">
+      <div class="flex flex-column gap-2 mb-2">
+        <label htmlFor="username">Email</label>
+
+        <input [(ngModel)]="email" pInputText id="username" aria-describedby="username-help" />
+
+        <label htmlFor="username">Confirmación de email</label>
+        <input [(ngModel)]="emailConfirmacion" pInputText id="username" aria-describedby="username-help" />
+        <small id="username-help">Repite el email.</small>
+        <p-messages
+            [(value)]="mensajeEmail"
+            [enableService]="false"
+            [closable]="true"
+          ></p-messages>
+      </div>
+
+      <button pButton pRipple label="Registrarse" (click)="registro()" class="p-button-success"></button>
+    </div>
+  </div>
+</div>

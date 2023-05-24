@@ -74,7 +74,7 @@ export class FeedService {
 
   obtenerUsuarioLogueado() {
     const email = this.cookies.get('usuarioLogueado');
-    const url = `${this.url}/usuario/email/${email}`;
+    const url = `${this.url}/usuario/nombre/${email}`;
 
     return this.http.get<Usuario>(url);
   }

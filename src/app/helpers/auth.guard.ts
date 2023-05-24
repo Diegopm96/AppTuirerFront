@@ -13,6 +13,11 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+      if (route.routeConfig?.path === 'registro') {
+        return true; // Permitir acceso sin autenticación a la ruta de registro
+      }
+
+
       if(this.loginService.getToken()){
         return true;
       }

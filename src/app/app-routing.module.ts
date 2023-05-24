@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { TuitsPropiosComponent } from './feed/components/tuits-propios/tuits-propios.component';
 import { TuitMostrarComponent } from './feed/components/tuit/tuit-mostrar/tuit-mostrar.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
     path:'login',
     component:LoginComponent
 
+  },
+  {
+    path:'registro',
+    component: RegistroComponent,
+    canActivate:[AuthGuard]
   }
 
 ];

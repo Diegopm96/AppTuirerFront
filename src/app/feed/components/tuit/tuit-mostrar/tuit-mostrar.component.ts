@@ -11,18 +11,25 @@ export class TuitMostrarComponent implements OnInit   {
   contenido:string ='';
   usuario:any = null;
   constructor(private feedService: FeedService) {
-    this.usuario= this.feedService.usuarioLogueado();
   }
 
   ngOnInit(): void {
+
+    this.usuario= this.feedService.usuarioLogueado();
+
     this.obtenerTuits();
   }
 
   obtenerTuits(): void {
-    this.feedService.obtenerTodosTuits().subscribe((tuits) => {
-      this.tuits = tuits;
-      this.tuits.reverse();
-      console.log(tuits);
-    });
-  }
+    if(this.usuario!==null){
+
+      this.feedService.obtenerTodosTuits().subscribe((tuits) => {
+        this.tuits = tuits;
+        this.tuits.reverse();
+        console.log(tuits);
+      });
+    }
+}
+
+
 }

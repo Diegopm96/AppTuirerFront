@@ -30,6 +30,7 @@ export class TuitCrearComponent implements OnInit {
       .crearTuit(this.contenido, this.usuario.id)
       .subscribe((response) => console.log(response));
     this.contenido = '';
-    window.location.reload();
+
+
   }
 }

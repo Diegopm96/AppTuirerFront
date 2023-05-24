@@ -19,11 +19,13 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
 import { DividerModule } from 'primeng/divider';
 import { CookieService } from 'ngx-cookie-service';
 import { MessagesModule } from 'primeng/messages';
+import { DialogModule } from 'primeng/dialog';
+import { RegistroComponent } from './registro/registro.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ],
+  declarations: [AppComponent, LoginComponent, RegistroComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -36,7 +38,8 @@ import { MessagesModule } from 'primeng/messages';
     FormsModule,
     PasswordModule,
     DividerModule,
-    MessagesModule
+    MessagesModule,
+    DialogModule
 
 
   ],

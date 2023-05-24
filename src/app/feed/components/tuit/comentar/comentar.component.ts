@@ -50,7 +50,7 @@ export class ComentarComponent implements OnInit {
         .crearLike(this.usuario.id, this.idTuit)
         .subscribe((response) => {
           console.log(response);
-          // window.location.reload();
+         
           this.ngOnChanges();
         });
       this.isLike = true;

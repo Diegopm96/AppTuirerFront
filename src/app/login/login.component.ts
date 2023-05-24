@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   email: any = '';
   password: any = '';
   mensaje:Message[]=[];
-
+  visible : boolean = false;
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     const login = {
-      email: this.email,
+      nombreUsuario: this.email,
       password: this.password,
     };
     console.log(login);
@@ -44,8 +44,11 @@ export class LoginComponent implements OnInit {
   obtenerUsuarioLogueado() {
     this.loginService.obtenerUsuarioLogueado().subscribe((response) => {
 
-      console.log(response);
-      sessionStorage.setItem('usuario', JSON.stringify(response));
+      if(response){
+
+        console.log(response);
+        sessionStorage.setItem('usuario', JSON.stringify(response));
+      }
 
 
     });
@@ -53,10 +56,15 @@ export class LoginComponent implements OnInit {
 
   comprobarLogin(){
 
-    if(!this.loginService.getToken()){
+    if(!sessionStorage.getItem('token')){
       this.mensaje = [{ severity: 'error', summary: 'Login incorrecto', detail: 'Contraseña o usuario incorrecto' }];
 
       this.password='';
     }
   }
+
+  irRegistro(){
+    this.router.navigate(['registro']);
+  }
+
 }
