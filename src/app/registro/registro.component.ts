@@ -17,7 +17,7 @@ export class RegistroComponent {
   mensajeEmail: Message[] = [];
   mensajePassword: Message[] = [];
   mensajeNombreUsuario: Message[] = [];
-  mensajeSuccess:Message[]=[]
+  mensajeSuccess: Message[] = [];
   constructor(private router: Router, private loginService: LoginService) {}
 
   confirmacionEmail(): boolean {
@@ -71,31 +71,30 @@ export class RegistroComponent {
       this.comprobarPassword() &&
       this.confirmacionEmail()
     ) {
+      const usuario: Usuario = {
+        id: 0,
+        email: this.email,
+        nombreUsuario: this.usuario,
+        password: this.password,
+      };
 
-        const usuario:Usuario = {
-          id:0,
-          email:this.email,
-          nombreUsuario:this.usuario,
-          password:this.password
-        };
-
-        this.loginService.registro(usuario).subscribe(response=>{
-          if(response){
-            console.log(response)
-            this.mensajeSuccess = [
-              {
-                severity: 'success',
-                summary: 'Registro terminado!'
-              },
-            ];
-            setTimeout(()=>{
-              this.router.navigate(['login'])
-            },2000);
-          }
-        })
-    }else{
-      console.log('no entra')
+      this.loginService.registro(usuario).subscribe((response) => {
+        if (response) {
+          console.log(response);
+          this.mensajeEmail = [];
+          this.mensajeNombreUsuario = [];
+          this.mensajePassword = [];
+          this.mensajeSuccess = [
+            {
+              severity: 'success',
+              summary: 'Registro terminado!',
+            },
+          ];
+          setTimeout(() => {
+            this.router.navigate(['login']);
+          }, 2000);
+        }
+      });
     }
   }
-
 }
