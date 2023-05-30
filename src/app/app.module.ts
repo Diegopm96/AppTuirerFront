@@ -21,6 +21,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { MessagesModule } from 'primeng/messages';
 import { DialogModule } from 'primeng/dialog';
 import { RegistroComponent } from './registro/registro.component';
+import { UtilsModule } from './utils/utils.module';
+
 
 
 
@@ -39,7 +41,9 @@ import { RegistroComponent } from './registro/registro.component';
     PasswordModule,
     DividerModule,
     MessagesModule,
-    DialogModule
+    DialogModule,
+    UtilsModule,
+
 
 
   ],

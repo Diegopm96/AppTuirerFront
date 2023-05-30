@@ -7,7 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { MenuModule } from 'primeng/menu';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -17,7 +17,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     CommonModule,
     SlideMenuModule,
     ButtonModule,
-    MenubarModule
+    MenubarModule,
+    MenuModule
 
   ],
   exports:[

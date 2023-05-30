@@ -17,6 +17,7 @@ export class RegistroComponent {
   mensajeEmail: Message[] = [];
   mensajePassword: Message[] = [];
   mensajeNombreUsuario: Message[] = [];
+  mensajeSuccess:Message[]=[]
   constructor(private router: Router, private loginService: LoginService) {}
 
   confirmacionEmail(): boolean {
@@ -81,11 +82,20 @@ export class RegistroComponent {
         this.loginService.registro(usuario).subscribe(response=>{
           if(response){
             console.log(response)
-            this.router.navigate(['login'])
+            this.mensajeSuccess = [
+              {
+                severity: 'success',
+                summary: 'Registro terminado!'
+              },
+            ];
+            setTimeout(()=>{
+              this.router.navigate(['login'])
+            },2000);
           }
         })
     }else{
       console.log('no entra')
     }
   }
+
 }

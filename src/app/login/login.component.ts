@@ -10,17 +10,19 @@ import { Message } from 'primeng/api';
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
+
   email: any = '';
   password: any = '';
   mensaje:Message[]=[];
   visible : boolean = false;
+
   constructor(
     private loginService: LoginService,
     private router: Router,
     private cookies: CookieService
   ) {}
   ngOnInit() {
-
+    sessionStorage.clear();
 }
 
   login() {
@@ -28,9 +30,10 @@ export class LoginComponent implements OnInit {
       nombreUsuario: this.email,
       password: this.password,
     };
+
     console.log(login);
-    this.comprobarLogin()
-    console.log(this.mensaje)
+    this.comprobarLogin();
+    console.log(this.mensaje);
 
     this.loginService.login(login).subscribe((response) => {
 

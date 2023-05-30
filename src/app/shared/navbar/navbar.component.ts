@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
 
 })
 export class NavbarComponent implements OnInit {
+
+constructor(private cookies:CookieService){
+
+}
 
   ngOnInit(): void {
    this.comprobarSesion()
@@ -17,6 +21,7 @@ export class NavbarComponent implements OnInit {
   cerrarSesion(){
     localStorage.clear();
     sessionStorage.clear();
+    this.cookies.delete('usuarioLogueado')
     window.location.reload();
   }
 

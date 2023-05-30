@@ -5,6 +5,7 @@ import { TuitMostrarComponent } from './feed/components/tuit/tuit-mostrar/tuit-m
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { RegistroComponent } from './registro/registro.component';
+import { UsuariosComponent } from './utils/usuarios/usuarios.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path:'registro',
     component: RegistroComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path:'usuarios',
+    component:UsuariosComponent,
     canActivate:[AuthGuard]
   }
 

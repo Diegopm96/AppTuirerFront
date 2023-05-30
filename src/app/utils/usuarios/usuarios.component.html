@@ -1,0 +1,18 @@
+<p-table [value]="usuarios" [tableStyle]="{ 'min-width': '30rem' }">
+  <ng-template pTemplate="body" let-usuario>
+    <tr>
+      <td>
+        <p-avatar
+          label="{{ usuario.nombreUsuario[0] }}"
+          styleClass="mr-2"
+          shape="circle"
+        ></p-avatar>
+      </td>
+      <td>{{usuario.nombreUsuario}}</td>
+
+      <td *ngIf="!comprobarSeguimiento(usuario.id) "><button pButton pRipple label="Follow" class="p-button-success" (click)="follow(usuario.id)"></button></td>
+      <td *ngIf="comprobarSeguimiento(usuario.id) "><button pButton pRipple label="Unfollow" class="p-button-warning" (click)="unfollow(usuario.id)" ></button></td>
+     <ng-template #elseBlock></ng-template>
+    </tr>
+  </ng-template>
+</p-table>

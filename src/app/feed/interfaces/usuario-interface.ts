@@ -4,4 +4,5 @@ export interface Usuario {
   nombreUsuario?: string;
   password?:      string;
   fechaRegistro?: Date;
+  siguiendo?:   Usuario[]
 }

@@ -2,3 +2,52 @@
 @import "primeng/resources/themes/soho-dark/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+
+body{
+  font-family: 'Inconsolata', monospace;
+
+
+  .tuit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tuit {
+    
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .tuit-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .tuit-username {
+    font-weight: bold;
+  }
+
+  .tuit-content {
+    margin-bottom: 1rem;
+  }
+
+  .tuit-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+
+  }
+
+  .tuit-footer-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .tuit-actions {
+    margin-top: 1rem;
+  }
+
+}

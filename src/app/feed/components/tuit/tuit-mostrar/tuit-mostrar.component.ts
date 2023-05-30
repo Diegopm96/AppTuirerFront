@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tuit } from 'src/app/feed/interfaces/tuit-interface';
 import { FeedService } from 'src/app/feed/services/feed.service';
+import { UtilsService } from '../../../../utils/utils.service';
 
 @Component({
   selector: 'app-tuit-mostrar',
@@ -10,7 +11,8 @@ export class TuitMostrarComponent implements OnInit   {
   tuits: Tuit[] = [];
   contenido:string ='';
   usuario:any = null;
-  constructor(private feedService: FeedService) {
+  seguidos:number[]=[];
+  constructor(private feedService: FeedService, private utilsService:UtilsService) {
   }
 
   ngOnInit(): void {
@@ -18,6 +20,10 @@ export class TuitMostrarComponent implements OnInit   {
     this.usuario= this.feedService.usuarioLogueado();
 
     this.obtenerTuits();
+
+    this.obtenerSeguidos(this.usuario.id)
+
+    // this.getTuits()
   }
 
   obtenerTuits(): void {
@@ -31,5 +37,24 @@ export class TuitMostrarComponent implements OnInit   {
     }
 }
 
+obtenerSeguidos(idUsuario:number){
+
+  if(idUsuario){
+    this.utilsService.obtenerSeguidos(idUsuario).subscribe(response=>{
+      this.seguidos=response;
+      console.log(this.seguidos)
+    });
+  }
+}
+
+comprobarSeguimiento(idSeguido: number) {
+  if(idSeguido===this.usuario.id){
+    return true;
+  }
+  if (this.seguidos) {
+    return this.seguidos.includes(idSeguido) ? true : false;
+  }
+  return null;
+}
 
 }
