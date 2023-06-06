@@ -13,15 +13,20 @@ export class TuitMostrarComponent implements OnInit   {
   usuario:any = null;
   seguidos:number[]=[];
   constructor(private feedService: FeedService, private utilsService:UtilsService) {
+
   }
 
   ngOnInit(): void {
 
     this.usuario= this.feedService.usuarioLogueado();
 
-    this.obtenerTuits();
+
+
+      this.obtenerTuits();
+
 
     this.obtenerSeguidos(this.usuario.id)
+
 
     // this.getTuits()
   }
@@ -33,7 +38,9 @@ export class TuitMostrarComponent implements OnInit   {
         this.tuits = tuits;
         this.tuits.reverse();
         console.log(tuits);
+
       });
+
     }
 }
 

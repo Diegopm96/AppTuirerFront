@@ -16,6 +16,8 @@ import { MostrarComentariosComponent } from './components/mostrar-comentarios/mo
 import { BadgeModule } from 'primeng/badge';
 import { DialogModule } from 'primeng/dialog';
 import { AvatarModule } from 'primeng/avatar';
+import { UtilsModule } from '../utils/utils.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [TuitCrearComponent, TuitMostrarComponent, TuitsPropiosComponent, ComentarComponent, MostrarComentariosComponent],
@@ -31,7 +33,9 @@ import { AvatarModule } from 'primeng/avatar';
     DividerModule,
     BadgeModule,
     DialogModule,
-    AvatarModule
+    AvatarModule,
+    UtilsModule,
+    SharedModule
 
   ],
   exports: [TuitCrearComponent,TuitsPropiosComponent],

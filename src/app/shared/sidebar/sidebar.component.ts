@@ -3,31 +3,32 @@ import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html'
+  templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent implements OnInit {
+  items: MenuItem[] = [];
+  mostrar: boolean = false;
 
-  items: MenuItem[]=[];
-  mostrar:boolean = false;
-
+  
   ngOnInit() {
+    sessionStorage.getItem('usuario') ? (this.mostrar = true) : false;
 
-    sessionStorage.getItem('usuario')?this.mostrar=true:false;
+    console.log('Mostrar?', this.mostrar);
+    console.log(sessionStorage.getItem('token'));
 
     this.items = [
       {
-        label:'Menu',
+        label: 'Menu',
         items: [
           {
             label: 'Inicio',
             icon: 'pi pi-home',
-            routerLink:"/"
-            ,
+            routerLink: '/',
           },
           {
             label: 'Perfil',
             icon: 'pi pi-user',
-            routerLink:"/propios"
+            routerLink: '/propios',
           },
           {
             separator: true,
@@ -35,19 +36,17 @@ export class SidebarComponent implements OnInit {
           {
             label: 'Buscar usuarios',
             icon: 'pi pi-users',
-            routerLink:"/usuarios"
+            routerLink: '/usuarios',
           },
           {
             separator: true,
           },
           {
             label: 'Nuevo mensaje',
-            icon: 'pi pi-envelope'
-          }
+            icon: 'pi pi-envelope',
+          },
         ],
-      }
-
-
+      },
     ];
   }
 }

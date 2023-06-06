@@ -10,11 +10,11 @@ import { Message } from 'primeng/api';
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
-
   email: any = '';
   password: any = '';
-  mensaje:Message[]=[];
-  visible : boolean = false;
+  mensaje: Message[] = [];
+  visible: boolean = false;
+  succes: boolean = false;
 
   constructor(
     private loginService: LoginService,
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ) {}
   ngOnInit() {
     sessionStorage.clear();
-}
+  }
 
   login() {
     const login = {
@@ -32,42 +32,50 @@ export class LoginComponent implements OnInit {
     };
 
     console.log(login);
-    this.comprobarLogin();
     console.log(this.mensaje);
 
-    this.loginService.login(login).subscribe((response) => {
-
-
-      this.obtenerUsuarioLogueado();
-      this.router.navigate(['/']);
-
-    });
+    this.loginService.login(login).subscribe(
+      (response) => {
+        this.succes = true;
+        this.comprobarLogin();
+        this.obtenerUsuarioLogueado();
+        setTimeout(() => {
+          this.router.navigate(['/']);
+          
+        }, 1000);
+      },
+      (error) => {
+        this.comprobarLogin();
+      }
+    );
   }
 
   obtenerUsuarioLogueado() {
     this.loginService.obtenerUsuarioLogueado().subscribe((response) => {
-
-      if(response){
-
+      if (response) {
         console.log(response);
         sessionStorage.setItem('usuario', JSON.stringify(response));
       }
-
-
     });
   }
 
-  comprobarLogin(){
+  comprobarLogin() {
+    if (!this.succes) {
+      this.mensaje = [
+        {
+          severity: 'error',
+          summary: 'Login incorrecto',
+          detail: 'Contraseña o usuario incorrecto',
+        },
+      ];
 
-    if(!sessionStorage.getItem('token')){
-      this.mensaje = [{ severity: 'error', summary: 'Login incorrecto', detail: 'Contraseña o usuario incorrecto' }];
-
-      this.password='';
+      this.password = '';
+    } else {
+      this.mensaje = [{ severity: 'success', summary: 'Login correcto' }];
     }
   }
 
-  irRegistro(){
+  irRegistro() {
     this.router.navigate(['registro']);
   }
-
 }

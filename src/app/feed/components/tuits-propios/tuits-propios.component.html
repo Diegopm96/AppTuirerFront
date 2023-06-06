@@ -1,4 +1,4 @@
-<div class="col">
+<!-- <div class="col">
   <app-tuit-crear></app-tuit-crear>
   <p-table [value]="tuits" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="body" let-tuit>
@@ -21,7 +21,41 @@
       </tr>
     </ng-template>
   </p-table>
+</div> -->
+
+<app-navbar> </app-navbar>
+<div class="grid mt-5">
+  <div class="col">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-7">
+    <div class="col">
+      <div class="container align-items-center">
+        <!-- <app-tuit-crear></app-tuit-crear>
+         -->
+         <h2>Tuits propios</h2>
+        <p-table [value]="tuits" [tableStyle]="{ 'min-width': '50rem' }">
+          <ng-template pTemplate="body" let-tuit>
+            <tr>
+              <td>
+                <p-card>
+                  <ng-template pTemplate="header">
+                    <i class="pi pi-user" style="color: #708090"></i>
+                    {{ usuario.nombreUsuario }}
+                  </ng-template>
+                  <p class="m-0">
+                    {{ tuit.contenido }}
+                  </p>
+                  <ng-template pTemplate="footer">
+                    Publicado el {{ tuit.fechaPublicacion | date }}
+                  </ng-template>
+                </p-card>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+  <div class="col"><app-barra-derecha></app-barra-derecha></div>
 </div>
-
-
-
