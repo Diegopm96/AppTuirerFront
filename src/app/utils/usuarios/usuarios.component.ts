@@ -9,21 +9,26 @@ import { UtilsModule } from '../utils.module';
 import { UtilsService } from '../utils.service';
 import { Usuario } from 'src/app/feed/interfaces/usuario-interface';
 import { FeedService } from '../../feed/services/feed.service';
+import { MensajeriaService } from 'src/app/mensajeria.service';
 
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
 })
 export class UsuariosComponent implements OnInit {
+  usuario:any = null;
   usuarios: Usuario[] = [];
   seguidos: number[] = [];
   @Input() min: boolean = false;
+  @Input() chat: boolean = false;
 
   constructor(
     private utilsService: UtilsService,
-    private feedService: FeedService
+    private feedService: FeedService,
+    private mensajeriaService:MensajeriaService
   ) {}
   ngOnInit(): void {
+    this.usuario= this.feedService.usuarioLogueado();
     sessionStorage.getItem('token') ? this.obtenerUsuarios() : null;
     this.obtenerSeguidos();
     this.usuariosAleatorios();
@@ -95,4 +100,13 @@ export class UsuariosComponent implements OnInit {
     }
     return list;
   }
+  crearChat(idReceptor:number){
+
+    this.mensajeriaService.crearChat(this.usuario.id,idReceptor).subscribe(response=>{
+      console.log(response)
+      location.reload()
+    });
+
+  }
+
 }

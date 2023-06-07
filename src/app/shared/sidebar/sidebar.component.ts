@@ -9,7 +9,7 @@ export class SidebarComponent implements OnInit {
   items: MenuItem[] = [];
   mostrar: boolean = false;
 
-  
+
   ngOnInit() {
     sessionStorage.getItem('usuario') ? (this.mostrar = true) : false;
 
@@ -44,6 +44,7 @@ export class SidebarComponent implements OnInit {
           {
             label: 'Nuevo mensaje',
             icon: 'pi pi-envelope',
+            routerLink:'/mensajes'
           },
         ],
       },

@@ -19,11 +19,7 @@ export class TuitMostrarComponent implements OnInit   {
   ngOnInit(): void {
 
     this.usuario= this.feedService.usuarioLogueado();
-
-
-
-      this.obtenerTuits();
-
+    this.obtenerTuits();
 
     this.obtenerSeguidos(this.usuario.id)
 
@@ -63,5 +59,4 @@ comprobarSeguimiento(idSeguido: number) {
   }
   return null;
 }
-
 }

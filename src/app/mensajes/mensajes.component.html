@@ -1,0 +1,122 @@
+<app-navbar> </app-navbar>
+<div class="grid mt-5">
+  <div class="col">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-7">
+    <div class="col">
+      <p-button
+        (click)="showDialog()"
+        icon="pi pi-external-link"
+        label="Nuevo chat"
+      ></p-button>
+      <p-dialog
+        header="Nuevo chat"
+        [(visible)]="visible"
+        [style]="{ width: '50vw' }"
+      >
+        <app-usuarios [chat]="true"></app-usuarios>
+      </p-dialog>
+
+      <p-table [value]="chats" [tableStyle]="{ 'min-width': '50rem' }">
+        <!-- <ng-template pTemplate="header">
+
+        </ng-template> -->
+        <ng-template pTemplate="body" let-chat>
+          <tr>
+            <td
+              *ngIf="chat.usuarioEmisor.nombreUsuario !== usuario.nombreUsuario"
+            >
+              <div class="card flex justify-content-center">
+                <p-accordion>
+                  <p-accordionTab
+                    header="{{ chat.usuarioEmisor.nombreUsuario }}"
+                  >
+                    <p-table
+                      [value]="chat.mensajes"
+                      [tableStyle]="{ 'min-width': '50rem' }"
+                    >
+                      <ng-template pTemplate="body" let-mensaje>
+                        <tr>
+                          <td>
+                            {{ mensaje.usuario.nombreUsuario }} -
+                            {{ mensaje.contenido }}
+                          </td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                    <div class="flex py-2 justify-content-center">
+                      <textarea
+                        [(ngModel)]="contenido"
+                        rows="5"
+                        cols="100"
+                        pInputTextarea
+                        [autoResize]="false"
+                        placeholder="Escribe algo..."
+                      ></textarea>
+
+                    </div>
+                    <button
+                      pButton
+                      pRipple
+                      label="Submit"
+                      class="p-button-success"
+                      (click)="crearMensaje(chat.id)"
+                    ></button>
+                  </p-accordionTab>
+                </p-accordion>
+              </div>
+            </td>
+            <td
+              *ngIf="chat.usuarioEmisor.nombreUsuario === usuario.nombreUsuario"
+            >
+              <div class="card flex justify-content-center">
+                <p-accordion>
+                  <p-accordionTab
+                    header="{{ chat.usuarioReceptor.nombreUsuario }}"
+                  >
+                    <span *ngIf="chat.mensajes.length === 0"
+                      >No hay mensajes todavía</span
+                    >
+                    <p-table
+                      [value]="chat.mensajes"
+                      [tableStyle]="{ 'min-width': '50rem' }"
+                    >
+                      <ng-template pTemplate="body" let-mensaje>
+                        <tr>
+                          <td>
+                            {{ mensaje.usuario.nombreUsuario }} -
+                            {{ mensaje.contenido }}
+                          </td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                    <div class="flex py-2 justify-content-center">
+                      <textarea
+                        [(ngModel)]="contenido"
+                        rows="5"
+                        cols="100"
+                        pInputTextarea
+                        [autoResize]="false"
+                        placeholder="Escribe algo..."
+                      ></textarea>
+
+                    </div>
+                    <button
+                      pButton
+                      pRipple
+                      label="Submit"
+                      class="p-button-success"
+                      (click)="crearMensaje(chat.id)"
+                    ></button>
+                  </p-accordionTab>
+                </p-accordion>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class="col"><app-barra-derecha></app-barra-derecha></div>
+</div>

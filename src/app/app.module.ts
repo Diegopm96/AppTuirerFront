@@ -22,12 +22,14 @@ import { MessagesModule } from 'primeng/messages';
 import { DialogModule } from 'primeng/dialog';
 import { RegistroComponent } from './registro/registro.component';
 import { UtilsModule } from './utils/utils.module';
-
-
+import { MensajesComponent } from './mensajes/mensajes.component';
+import { TableModule } from 'primeng/table';
+import { AccordionModule } from 'primeng/accordion';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegistroComponent ],
+  declarations: [AppComponent, LoginComponent, RegistroComponent, MensajesComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,6 +45,9 @@ import { UtilsModule } from './utils/utils.module';
     MessagesModule,
     DialogModule,
     UtilsModule,
+    TableModule,
+    AccordionModule,
+    InputTextareaModule
 
 
 

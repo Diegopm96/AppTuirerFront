@@ -7,6 +7,8 @@ import { AuthGuard } from './helpers/auth.guard';
 import { RegistroComponent } from './registro/registro.component';
 import { UsuariosComponent } from './utils/usuarios/usuarios.component';
 import { BuscarUsuariosComponent } from './utils/buscar-usuarios/buscar-usuarios.component';
+import { MensajeriaService } from './mensajeria.service';
+import { MensajesComponent } from './mensajes/mensajes.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,12 @@ const routes: Routes = [
   {
     path:'usuarios',
     component:BuscarUsuariosComponent,
+    canActivate:[AuthGuard]
+  },
+
+  {
+    path:'mensajes',
+    component:MensajesComponent,
     canActivate:[AuthGuard]
   }
 
