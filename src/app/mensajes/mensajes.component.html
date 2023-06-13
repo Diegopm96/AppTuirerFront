@@ -38,9 +38,12 @@
                     >
                       <ng-template pTemplate="body" let-mensaje>
                         <tr>
-                          <td>
-                            {{ mensaje.usuario.nombreUsuario }} -
-                            {{ mensaje.contenido }}
+                          <td >
+                            <div class="p-justify-end">
+
+                              {{ mensaje.usuario.nombreUsuario }} -
+                              {{ mensaje.contenido }}
+                            </div>
                           </td>
                         </tr>
                       </ng-template>
@@ -48,7 +51,7 @@
                     <div class="flex py-2 justify-content-center">
                       <textarea
                         [(ngModel)]="contenido"
-                        rows="5"
+                        rows="2"
                         cols="100"
                         pInputTextarea
                         [autoResize]="false"
@@ -84,9 +87,12 @@
                     >
                       <ng-template pTemplate="body" let-mensaje>
                         <tr>
-                          <td>
-                            {{ mensaje.usuario.nombreUsuario }} -
-                            {{ mensaje.contenido }}
+                          <td >
+                            <div class="p-justify-end">
+
+                              {{ mensaje.usuario.nombreUsuario }} -
+                              {{ mensaje.contenido }}
+                            </div>
                           </td>
                         </tr>
                       </ng-template>
@@ -94,7 +100,7 @@
                     <div class="flex py-2 justify-content-center">
                       <textarea
                         [(ngModel)]="contenido"
-                        rows="5"
+                        rows="2"
                         cols="100"
                         pInputTextarea
                         [autoResize]="false"

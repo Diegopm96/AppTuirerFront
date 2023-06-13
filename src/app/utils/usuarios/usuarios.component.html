@@ -14,8 +14,8 @@
 
       <td>{{usuario.nombreUsuario}}</td>
 
-      <td *ngIf="!comprobarSeguimiento(usuario.id) "><button *ngIf="!chat" pButton pRipple label="Follow" class="p-button-success" (click)="follow(usuario.id)"></button></td>
-      <td *ngIf="comprobarSeguimiento(usuario.id) "><button *ngIf="!chat" pButton pRipple label="Unfollow" class="p-button-warning" (click)="unfollow(usuario.id)" ></button></td>
+      <td *ngIf="!comprobarSeguimiento(usuario.id) "><button *ngIf="!chat" pButton pRipple label="Follow" class=" max-width-button p-button-success" (click)="follow(usuario.id)"></button></td>
+      <td *ngIf="comprobarSeguimiento(usuario.id) "><button *ngIf="!chat" pButton pRipple label="Unfollow" class="max-width-button p-button-warning" (click)="unfollow(usuario.id)" ></button></td>
       <td *ngIf="chat" ><button pButton pRipple label="Abrir chat" class="p-button-warning" (click)="crearChat(usuario.id)" ></button></td>
 
 

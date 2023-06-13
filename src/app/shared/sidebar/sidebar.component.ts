@@ -42,7 +42,7 @@ export class SidebarComponent implements OnInit {
             separator: true,
           },
           {
-            label: 'Nuevo mensaje',
+            label: 'Mensajes',
             icon: 'pi pi-envelope',
             routerLink:'/mensajes'
           },

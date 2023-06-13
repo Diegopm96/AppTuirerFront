@@ -6,7 +6,7 @@ import { FeedService } from '../feed/services/feed.service';
 
 @Component({
   selector: 'app-mensajes',
-  templateUrl: './mensajes.component.html',
+  templateUrl: './mensajes.component.html'
 })
 export class MensajesComponent {
   chats: Chat[] = [];
@@ -54,5 +54,9 @@ export class MensajesComponent {
       console.log(response);
     })
     location.reload()
+  }
+  esUsuarioLogueado(usuario:string){
+
+   return usuario ===this.usuario.nombreUsuario;
   }
 }
